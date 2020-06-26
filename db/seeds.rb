@@ -7,11 +7,11 @@ Review.destroy_all
 User.create(email:'fake@email.com', password: 'password1', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: Faker::TvShows::Seinfeld.quote)
 end 
 
-50.times do 
+150.times do 
     Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: 'https://www.pngitem.com/pimgs/m/583-5834015_main-product-photo-class-gallery-placeholder-image-swarovski.png', price: Faker::Commerce.price, category: Faker::Commerce.department)
 end 
 
-60.times do 
+400.times do 
     Purchase.create(user_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
