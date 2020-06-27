@@ -1,4 +1,4 @@
-User.destroy_all 
+
 Item.destroy_all 
 Purchase.destroy_all
 Review.destroy_all
@@ -16,5 +16,13 @@ end
 end 
 
 122.times do 
-    Review.create(item_id: Item.all.sample.id, user_id: User.all.sample.id, rating: rand(1..6), content: Faker::TvShows::TheFreshPrinceOfBelAir.quote )
+    Review.create(item_id: Item.all.sample.id, user_id: User.all.sample.id, rating: rand(1..6), content: Faker::Restaurant.review )
+end 
+
+200.times do 
+    Message.create(content: Faker::TvShows::HeyArnold.quote, seller_id: User.all.sample.id, buyer_id: User.all.sample.id, item_id: Item.all.sample.id)
+end 
+
+300.times do 
+    Reply.create(content: Faker::TvShows::HeyArnold.quote, user_id: User.all.sample.id, message_id: Message.all.sample.id)
 end 
