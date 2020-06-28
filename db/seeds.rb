@@ -68,3 +68,7 @@ end
 30.times do 
     Reply.create(content: Faker::TvShows::HeyArnold.quote, user_id: User.all.sample.id, message_id: Message.all.sample.id)
 end 
+
+50.times do 
+    Favorite.create(user_id: User.all.sample.id , item_id: Item.all.sample.id )
+end 
