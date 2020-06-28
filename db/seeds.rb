@@ -3,10 +3,11 @@ Item.destroy_all
 Purchase.destroy_all
 Review.destroy_all
 Reply.destroy_all
+User.destroy_all
 
-# 30.times do 
-# User.create(email:'fake@email.com', password: 'password1', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: Faker::TvShows::Seinfeld.quote)
-# end 
+30.times do 
+User.create(email:'fake@email.com', password: 'password1', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: Faker::TvShows::Seinfeld.quote)
+end 
 
 pictures = [
     'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQo5eTyPFB6RrNea58QfRtkaZk_HGSVdvYfnspDBUq5MpvJroWmlJ7g4aO3HHrkhdkpyaOtYRMCEi3HGWyEn6qgxws676fIH9rCBPobM93KD-L6ykFFoeEvKQ&usqp=CAE',
@@ -29,22 +30,26 @@ pictures = [
 ]
 
 
-300.times do 
-    Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures.sample , price: Faker::Commerce.price, category: Faker::Commerce.department)
+count = 0 
+while count < pictures.size 
+    Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures[count] , price: Faker::Commerce.price, category: Faker::Commerce.department)
+    count = count + 1 
 end 
 
-400.times do 
+puts 'items created'
+
+40.times do 
     Purchase.create(user_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
-3322.times do 
+32.times do 
     Review.create(item_id: Item.all.sample.id, user_id: User.all.sample.id, rating: rand(1..6), content: Faker::Restaurant.review )
 end 
 
-2200.times do 
+22.times do 
     Message.create(content: Faker::TvShows::HeyArnold.quote, seller_id: User.all.sample.id, buyer_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
-300.times do 
+30.times do 
     Reply.create(content: Faker::TvShows::HeyArnold.quote, user_id: User.all.sample.id, message_id: Message.all.sample.id)
 end 
