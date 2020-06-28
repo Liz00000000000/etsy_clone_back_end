@@ -5,11 +5,12 @@ class ItemsController < ApplicationController
     end
     
     def new
-    
+      item = Item.new 
     end
     
     def create
-    
+     item = Item.create(item_params)
+     render json: item.to_json 
     end
     
     def edit
@@ -28,4 +29,8 @@ class ItemsController < ApplicationController
     def destroy
     
     end
+    private 
+    def item_params 
+      params.require(:item).permit(:user_id, :title, :price, :picture, :category)
+    end 
 end
