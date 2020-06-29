@@ -47,7 +47,7 @@ pictures = [
 
 count = 0 
 while count < pictures.size 
-    Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures[count] , price: Faker::Commerce.price, category: Faker::Commerce.department)
+    Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures[count] , price: Faker::Commerce.price, category: Faker::Commerce.department(max: 1))
     count = count + 1 
 end 
 
