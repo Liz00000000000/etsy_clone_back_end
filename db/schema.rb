@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_170958) do
+ActiveRecord::Schema.define(version: 2020_06_29_172550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2020_06_28_170958) do
     t.string "picture"
     t.string "price"
     t.string "category"
+    t.string "sub_category"
+    t.string "material"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -62,6 +64,20 @@ ActiveRecord::Schema.define(version: 2020_06_28_170958) do
     t.integer "user_id"
     t.integer "rating"
     t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string "sentance_1"
+    t.string "sentance_2"
+    t.string "sentance_3"
+    t.string "sentance_4"
+    t.string "user_first_name"
+    t.string "user_last_name"
+    t.string "story_title"
+    t.string "old_job"
+    t.string "product"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

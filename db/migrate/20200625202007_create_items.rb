@@ -7,6 +7,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :picture 
       t.string :price
       t.string :category 
+      t.string :sub_category
+      t.string :material
       t.timestamps
     end
   end
