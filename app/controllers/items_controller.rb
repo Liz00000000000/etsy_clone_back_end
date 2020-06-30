@@ -14,11 +14,13 @@ class ItemsController < ApplicationController
     end
     
     def edit
-    
+      item = Item.find(params[:id])
     end
     
     def update
-    
+      item = Item.find(params[:id])
+      item.update(item_params)
+      render json: item.to_json
     end
     
     def show
@@ -27,7 +29,8 @@ class ItemsController < ApplicationController
     end
     
     def destroy
-    
+      item = Item.find(params[:id])
+      item.destroy
     end
     private 
     def item_params 

@@ -52,21 +52,21 @@ pictures = [
 ]
 
 
-100.times do 
+200.times do 
     Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures.sample , price: Faker::Commerce.price, category: Faker::Commerce.department(max: 1), sub_category: Faker::Commerce.department(max: 3, fixed_amount: true), material: Faker::Commerce.material)
 end 
 
 puts 'items created'
 
-40.times do 
+100.times do 
     Purchase.create(user_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
-32.times do 
+1332.times do 
     Review.create(item_id: Item.all.sample.id, user_id: User.all.sample.id, rating: rand(1..6), content: Faker::Restaurant.review )
 end 
 
-22.times do 
+222.times do 
     Message.create(content: Faker::TvShows::HeyArnold.quote, seller_id: User.all.sample.id, buyer_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
