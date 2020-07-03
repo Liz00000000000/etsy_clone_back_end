@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :histories
   resources :stories
   resources :favorites
   resources :replies

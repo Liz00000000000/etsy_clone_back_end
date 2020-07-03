@@ -5,6 +5,7 @@ Review.destroy_all
 Reply.destroy_all
 Favorite.destroy_all
 Story.destroy_all
+History.destroy_all
 # User.destroy_all
 
 # 30.times do 
@@ -71,17 +72,17 @@ pictures = [
 ]
 
 
-400.times do 
+200.times do 
     Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures.sample , price: Faker::Commerce.price, category: Faker::Commerce.department(max: 1), sub_category: Faker::Commerce.department(max: 3, fixed_amount: true), material: Faker::Commerce.material)
 end 
 
 puts 'items created'
 
-200.times do 
+350.times do 
     Purchase.create(user_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
-1932.times do 
+900.times do 
     Review.create(item_id: Item.all.sample.id, user_id: User.all.sample.id, rating: rand(1..6), content: Faker::Restaurant.review )
 end 
 
@@ -91,9 +92,15 @@ end
 
 444.times do 
     Reply.create(content: Faker::TvShows::HeyArnold.quote, user_id: User.all.sample.id, message_id: Message.all.sample.id)
+end
+
+999.times do 
+    History.create(user_id: User.all.sample.id, item_id: Item.all.sample.id )
 end 
 
-900.times do 
+puts 'history created'
+
+90.times do 
     Favorite.create(user_id: User.all.sample.id , item_id: Item.all.sample.id )
 end 
 
