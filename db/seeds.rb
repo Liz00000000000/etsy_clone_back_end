@@ -6,11 +6,13 @@ Reply.destroy_all
 Favorite.destroy_all
 Story.destroy_all
 History.destroy_all
-# User.destroy_all
+User.destroy_all
 
-# 30.times do 
-# User.create(email:'fake@email.com', password: 'password1', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: Faker::TvShows::Seinfeld.quote)
-# end 
+# puts 'models deleted'
+
+30.times do 
+User.create(email: Faker::Internet.email, password: 'password', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: Faker::TvShows::Seinfeld.quote)
+end 
 
 pictures = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS_4drcqdD4STdy06M7GMKFlV6Wo2mW1rQMA&usqp=CAU',
@@ -71,30 +73,36 @@ pictures = [
 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQX-ewf3X9QP-b29gpiCBehOgrYHUqDf2-iHdQziwuMcEbzM2Y89UOvSncQhqmYgEe3Mp0jIB6EHMcCAT8cDgXZRZoS7KSLHccjo3g9Tl_KnEg_eWm05OYreQ&usqp=CAE'
 ]
 
-
-200.times do 
-    Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures.sample , price: Faker::Commerce.price, category: Faker::Commerce.department(max: 1), sub_category: Faker::Commerce.department(max: 3, fixed_amount: true), material: Faker::Commerce.material)
+count = 0
+while count < pictures.size  
+    Item.create(user_id: User.all.sample.id, title: Faker::Commerce.product_name, picture: pictures[count], price: Faker::Commerce.price, category: Faker::Commerce.department(max: 1), sub_category: Faker::Commerce.department(max: 3, fixed_amount: true), material: Faker::Commerce.material)
+    puts count 
+    count = count + 1 
 end 
 
 puts 'items created'
 
-350.times do 
+90.times do 
     Purchase.create(user_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
-900.times do 
+puts 'purchases created'
+
+90.times do 
     Review.create(item_id: Item.all.sample.id, user_id: User.all.sample.id, rating: rand(1..6), content: Faker::Restaurant.review )
 end 
 
-470.times do 
+puts 'reviews created'
+
+90.times do 
     Message.create(content: Faker::TvShows::HeyArnold.quote, seller_id: User.all.sample.id, buyer_id: User.all.sample.id, item_id: Item.all.sample.id)
 end 
 
-444.times do 
+94.times do 
     Reply.create(content: Faker::TvShows::HeyArnold.quote, user_id: User.all.sample.id, message_id: Message.all.sample.id)
 end
 
-999.times do 
+99.times do 
     History.create(user_id: User.all.sample.id, item_id: Item.all.sample.id )
 end 
 
